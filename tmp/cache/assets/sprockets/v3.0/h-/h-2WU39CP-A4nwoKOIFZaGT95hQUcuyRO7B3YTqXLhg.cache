@@ -1,0 +1,47 @@
+I"ü(function() {
+  App.room = App.cable.subscriptions.create({
+    channel: "RoomChannel",
+    room: $(".messages").attr("id")
+  }, {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      var context, parsed_context;
+      console.log(data);
+      if (data["room"] === 0) {
+        console.log(data["room"]);
+        console.log("received in index");
+        $("#" + data["room"]).css("color", "red");
+        return $(".flexbox-columns-start").prepend($("#" + data["room"]));
+      } else {
+        $('.messages').append(data['message']);
+        console.log("received");
+        console.log(data);
+        $("#mainColumn").prepend($("#" + data["room"]));
+        console.log($("#" + data["room"]));
+        $("#wrapper").scrollTop($("#wrapper")[0].scrollHeight);
+        context = data['context'].replace(/=>/g, ":");
+        parsed_context = JSON.parse(context);
+        $('#browsing_choices').val(parsed_context.intent);
+        $('#brand').val(parsed_context.brand);
+        return console.log($("#" + data["room"]));
+      }
+    },
+    speak: function(message, id) {
+      return this.perform('speak', {
+        message: message,
+        id: id
+      });
+    }
+  });
+
+  $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
+    if (event.keyCode === 13) {
+      console.log(App.cable.subscriptions);
+      App.room.speak(event.target.value, $(".messages").attr("id"), event.target.value = '');
+      return event.preventDefault();
+    }
+  });
+
+}).call(this);
+:ET

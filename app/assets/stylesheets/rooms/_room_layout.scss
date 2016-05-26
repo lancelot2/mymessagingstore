@@ -1,0 +1,124 @@
+// General
+
+.container-large {
+  max-width: 1350px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main-room-display {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexbox-columns-start h4 {
+  font-size: 17px;
+  font-weight: bold;
+  color: #026FFD;
+}
+
+
+
+
+
+
+
+
+// Context specific
+
+.context_dropdown {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 15px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.context_dropdown label {
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.context-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15px;
+}
+
+
+
+
+// Conversation specific
+
+.flexbox-columns-end {
+  margin-left: 54%;
+}
+
+.width-fixing {
+  width: 620px;
+}
+
+
+
+
+// Conversation details specific
+
+.details-body {
+  padding: 20px;
+  min-width: 320px;
+}
+
+.details-body p {
+  font-size: 14px;
+  margin: 0px 0px 7px 15px;
+}
+
+
+
+// Suggestion specific
+
+.suggestion-body {
+  padding: 15px;
+}
+
+.suggestion-list  {
+  display: flex;
+  justify-content: space-around;
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.more-suggestions {
+  margin-top: 40px;
+}
+
+
+
+
+// Taking the lead on the conversation
+
+.message-form  {
+  display: flex;
+  justify-content: space-around;
+}
+
+.taking-the-lead-body {
+    padding: 15px;
+}
+
+.backer-message-templates  {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.backer-message-template {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

@@ -1,0 +1,11 @@
+production:
+  adapter: redis
+  url: redis://redistogo:86e92dfa0b994140ce7f3e7493bd1b12@porgy.redistogo.com:9363/
+
+development:
+  adapter: async
+  url: redis://localhost:6379/1
+
+test:
+  adapter: async
+

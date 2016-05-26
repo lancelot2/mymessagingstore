@@ -1,0 +1,30 @@
+I"9(function() {
+  App.room = App.cable.subscriptions.create({
+    channel: "RoomChannel",
+    room: $(".messages").attr("id")
+  }, {
+    connected: function() {},
+    disconnected: function() {},
+    received: function(data) {
+      console.log(data);
+      $('.messages').append(data['message']);
+      return $("#messages").scrollTop($("#messages")[0].scrollHeight);
+    },
+    speak: function(message, id) {
+      return this.perform('speak', {
+        message: message,
+        id: id
+      });
+    }
+  });
+
+  $(document).on('keypress', '[data-behavior~=room_speaker]', function(event) {
+    if (event.keyCode === 13) {
+      console.log(App.cable.subscriptions);
+      App.room.speak(event.target.value, $(".messages").attr("id"), event.target.value = '');
+      return event.preventDefault();
+    }
+  });
+
+}).call(this);
+:ET

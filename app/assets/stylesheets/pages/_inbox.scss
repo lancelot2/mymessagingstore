@@ -1,0 +1,136 @@
+.conversation-link {
+  width: 100%;
+  max-height: 75px;
+  padding: 5px;
+  border-bottom: 1px solid rgb(240, 240, 240);
+  overflow: hidden;
+  .conversation-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 auto;
+  }
+  .conversation-preview {
+    ul.list-inline.conversation-header {
+      margin-left: 0;
+      li {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    i.fa {
+      font-size: 12px;
+      color: rgb(240, 240, 240);
+    }
+    margin-left: 10px;
+    overflow: hidden;
+    .message-preview {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(251, 251, 251);
+    text-decoration: none;
+  }
+}
+.selected,
+.selected:hover {
+  background-color: #3A5795;
+  color: white;
+  h6,
+  .date {
+    color: white;
+  }
+}
+.unread-messages {
+  background-color: rgb(251, 251, 251);
+}
+.panel-body > .flexbox-columns {
+  width: 100%;
+}
+.panel-heading h4 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+.scroll {
+  overflow: scroll;
+}
+
+
+.flexbox-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .flex-item {
+    flex: 1 0;
+  }
+}
+.flexbox-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  .flex-item {
+    flex: 0 1;
+    margin: 5px 0 0 10px;
+  }
+}
+.end-of-messages {
+  font-size: 13px;
+  text-align: center;
+  color: #d9d9d9;
+  border-bottom: 1px solid rgb(240, 240, 240);
+  width: 100%;
+  p {
+    margin-top: 10px;
+  }
+}
+.fixed-height {
+  height: 68vh;
+}
+
+.message-container {
+  width: 100%;
+  .message-content {
+    h6 {
+      margin-top: 0;
+      margin-bottom: 7px;
+    }
+  }
+  .message-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 auto;
+  }
+}
+
+.message-input {
+  background-color: white;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.date {
+  font-size: 13px;
+  color: #bdc1c9;
+}
+.btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+  outline: none;
+}
+#wrapper {
+  overflow: scroll;
+  padding-bottom: 61px;
+  max-height: 470px;
+  &.focused {
+    padding-bottom: 159px;
+  }
+}
+
+.conversation-link:hover{
+  text-decoration:none;
+}

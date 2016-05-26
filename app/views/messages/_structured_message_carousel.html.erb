@@ -1,0 +1,49 @@
+
+<%# message = eval(message) %>
+<% elements = message[:attachment][:payload][:elements] %>
+<% text = message[:attachment][:payload][:text] %>
+<% buttons = message[:attachment][:payload][:buttons] %>
+<% image = message[:attachment][:payload][:url] %>
+
+
+
+<!-- First type identified: the 'Generic' template -->
+
+  <div class="carousel flexbox-columns-end">
+    <!-- Iterating on the elements of the mssage in order to display all of them -->
+    <% elements.each do |element| %>
+     <% unless element.nil? %>
+      <div class="generic_card">
+        <div class="structured-image">
+          <%= link_to root_path do %>
+
+             <%= image_tag(element.fetch(:image_url), width: '200')%>
+          <% end %>
+        </div>
+        <div class="structured-text">
+          <p><strong><%= element.fetch(:title) %></strong></p>
+          <% if element[:subtitle].present? %>
+            <p><%= element.fetch(:subtitle) %></p>
+          <% end %>
+        </div>
+
+        <!-- Extracting the different buttons in the element (if multiple than multiple CTA)-->
+        <% buttons = element[:buttons] %>
+        <%# buttons = element.select {|k,v| k === "buttons"} %>
+
+        <!-- Iterating on the buttons in order to display all the CTA -->
+        <% buttons.each do |button| %>
+          <div class="structured-button text-center">
+            <p style="color:#0084FF;"><%= button.fetch(:title) %></p>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+    <% end %>
+  </div>
+
+
+
+
+
+

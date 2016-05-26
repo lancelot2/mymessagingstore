@@ -1,0 +1,115 @@
+
+<%= render 'shared/admin_mini_navbar' %>
+
+<div class="container-large main-room-display">
+
+
+
+
+  <!-- Direct access to all the conversations -->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>All conversations</h4>
+    </div>
+
+    <div  id="mainColumn" class="flexbox-columns-start fixed-height overflow">
+
+
+      <% @rooms.sort_by {|r| r.messages.last.created_at}.reverse.each do |room| %>
+
+        <%= link_to controller: "rooms", action: "update_index", room_id: room.id, remote: true do %>
+          <div id="<%= room.id %>" class="room-tab">
+            <div class="user-avatar">
+              <% if room.profile_picture.present? %>
+                <%= image_tag(room.profile_picture, class: "avatar-tab")%>
+              <% else %>
+                <%= image_tag("avatar_sample.png", class: "avatar-tab")%>
+              <% end %>
+            </div>
+            <div class="user-main">
+              <div class="room-name">
+                <%= room.first_name %>
+              </div>
+              <div class="last-session-status">
+                <%#= session.status %>
+                <%= image_tag("green-circle.png", width: '10')%>
+                <%= link_to "All good", room_path(room) %>
+              </div>
+            </div>
+            <div class="room-last-update">
+              <%= room.messages.last.created_at.strftime("%b %e, %l:%M%P")  %>
+            </div>
+          </div>
+        <% end %>
+
+      <% end %>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!--     Session itself -->
+  <div class="panel panel-default width-fixing">
+    <div class="panel-heading">
+      <h4>Full conversation</h4>
+    </div>
+    <div class="panel-body fixed-height">
+      <div id="wrapper">
+        <div class="messages flex-item">
+          <% @room.messages.order(created_at: :asc).each do |message| %>
+            <% if message.content.include?("attachment") %>
+              <% if eval(message.content)[:attachment][:payload][:template_type] == "generic" %>
+                <%= render "messages/structured_message_carousel", message: eval(message.content) %>
+              <% elsif eval(message.content)[:attachment][:payload][:template_type] == "button" %>
+                <%= render "messages/structured_message_button", message: eval(message.content) %>
+              <% elsif eval(message.content)[:attachment][:payload][:template_type] == "receipt" %>
+                <%= render "messages/structured_message_receipt", message: eval(message.content) %>
+              <% else %>
+                <%= render "messages/image", message: message %>
+            <% end %>
+            <% else %>
+              <%= render "messages/text_message", message: message %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!--  Information about the chatbot, the user and their history together -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Details from this specific room</h4>
+    </div>
+    <div class="details-body flexbox-columns-start">
+      <h4>Chatbot details</h4>
+      <p>Company name:</p>
+      <p>Creation date:</p>
+      <p>Chat main purpose:</p>
+      <p># of sessions:</p>
+      <p># of users:</p>
+      <h4>User details</h4>
+      <p>First name:</p>
+      <p>Local time:</p>
+      <p># of sessions:</p>
+      <p> </p>
+      <h4>Chatbot / User history</h4>
+      <p>First conversation date:</p>
+      <p>Total number of sessions:</p>
+      <p>Current conversation starting date:</p>
+      <p># of messages in current session:</p>
+      <p># of help required in this session:</p>
+    </div>
+  </div>
+</div>

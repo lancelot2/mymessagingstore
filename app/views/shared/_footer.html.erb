@@ -1,0 +1,21 @@
+<div class="footer text-center" style="padding: 20px">
+  <div class="sponsor">
+    <%=image_tag("london-icon.png", :class => "sponsor_image_1")%>
+    <%=image_tag("la_french_tech_icon.png", :class => "sponsor_image_1")%>
+    <%=image_tag("my_messaging_store_round_logo.png", :class => "sponsor_image_1")%>
+  </div>
+  <p><strong>Proudly developed in London and yet commited to La French Tech</strong></p>
+
+  <div class="container" style="padding-top: 30px;">
+    <div class="footer_bottom">
+      <div class="footer_links">
+        <%= link_to t("contact"), contact_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to t("blog"), "https://medium.com/the-ai-report", :target => "_blank", class: "navbar-wagon-item navbar-wagon-link" %>
+
+        <%#= link_to t("press"), press_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%#= link_to t("jobs"), jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      </div>
+        <p> ©2016 - All Rights Reserved. </p>
+    </div>
+  </div>
+</div>
